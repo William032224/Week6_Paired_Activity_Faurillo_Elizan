@@ -8,6 +8,7 @@ namespace Faurillo_W5_OOP
             {
                 Brains.InitializeCardHolders();
                 Brains.InitializeTransactionHistory();
+                Brains.InitializeBills();
                 ATM.ShowMainMenu();
                 if (Logins.Login())
                 {
