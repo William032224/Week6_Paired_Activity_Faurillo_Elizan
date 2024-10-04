@@ -8,6 +8,7 @@ namespace Faurillo_W5_OOP
 {
     internal class ATM
     {
+        
         public static void ShowMainMenu()
         {
             Console.WriteLine("*--------------------------*");
@@ -32,7 +33,8 @@ namespace Faurillo_W5_OOP
                 Console.WriteLine("| 2. Cash Deposit          |");
                 Console.WriteLine("| 3. Withdrawal            |");
                 Console.WriteLine("| 4. Transactions          |");
-                Console.WriteLine("| 5. Logout                |");
+                Console.WriteLine("| 5. Bills Payment         |");
+                Console.WriteLine("| 6. Logout                |");
                 Console.WriteLine("|                          |");
                 Console.WriteLine("*--------------------------*");
 
@@ -53,6 +55,9 @@ namespace Faurillo_W5_OOP
                         Brains.ShowTransactions();
                         break;
                     case "5":
+                        BillMenu();
+                        break;
+                    case "6":
                         isLoggedIn = false;
                         Console.WriteLine("Logging out...");
                         break;
@@ -60,6 +65,31 @@ namespace Faurillo_W5_OOP
                         Console.WriteLine("Invalid option. Please try again.");
                         break;
                 }
+            }
+        }
+        public static void BillMenu()
+        {
+            Console.WriteLine("*--------------------------*");
+            Console.WriteLine("|          BILLS           |");
+            Console.WriteLine("| [1] Water                |");
+            Console.WriteLine("| [2] Electricity          |");
+            Console.WriteLine("| [3] Loans                |");
+            Console.WriteLine("|                          |");
+            Console.WriteLine("*--------------------------*");
+
+            string user_input = Console.ReadLine();
+
+            switch (user_input)
+            {
+                case "1":                    
+                    Brains.BillPayment();
+                    break;
+                case "2":                    
+                    Brains.BillPayment();
+                    break;
+                case "3":
+                    Brains.BillPayment();
+                    break;
             }
         }
     }
