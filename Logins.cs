@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Faurillo_W5_OOP
 {
     internal class Logins
@@ -10,23 +16,31 @@ namespace Faurillo_W5_OOP
             switch (mainMenuChoice)
             {
                 case "1":
-                    loggedIn = true;
-                    Console.WriteLine("Please enter your card number:");
-                    string cardNumber = Console.ReadLine();
-                    Console.WriteLine("Please enter your PIN:");
-                    string pin = Console.ReadLine();
+                    int attempts = 0;
+                    loggedIn = false;
 
-                    if (ValidateCredentials(cardNumber, pin))
+                    while (attempts < 3 && !loggedIn)
                     {
-                        loggedIn = true;
-                        Brains.currentCardNumber = cardNumber;
-                        Console.WriteLine("Login successful.");
+                        Console.WriteLine("Please enter your card number:");
+                        string cardNumber = Console.ReadLine();
+                        Console.WriteLine("Please enter your PIN:");
+                        string pin = Console.ReadLine();
+
+                        if (ValidateCredentials(cardNumber, pin))
+                        {
+                            loggedIn = true;
+                            Brains.currentCardNumber = cardNumber;
+                            Console.WriteLine("Login successful.");
+                        }
+                        else
+                        {
+                            attempts++;
+                            Console.WriteLine($"Invalid card number or PIN. You have {3 - attempts} left. Please try again.");
+                        }
                     }
-                    else
+                    if (!loggedIn)
                     {
-                        Console.WriteLine("Invalid card number or PIN. Please try again.");
-                        loggedIn = false;
-                        Login();
+                        Console.WriteLine("Too many attempts. Logging out...");
                     }
                     break;
 
